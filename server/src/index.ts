@@ -3,6 +3,7 @@ import http from "node:http";
 import cors from "cors";
 import * as dotenv from "dotenv";
 import { Server } from "socket.io";
+import { roomHandler } from "./room";
 
 dotenv.config();
 
@@ -21,12 +22,14 @@ const io = new Server(httpServer, {
 });
 
 io.on("connection", (socket) => {
-  console.log(socket);
+  //   console.log(socket);
   console.log("a user connected");
 
   socket.on("disconnect", () => {
     console.log("user disconnected");
   });
+
+  roomHandler(socket);
 });
 
 httpServer.listen(PORT, () => {

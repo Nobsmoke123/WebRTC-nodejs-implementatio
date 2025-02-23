@@ -1,19 +1,16 @@
-import React, { useEffect } from 'react';
-import './App.css';
-import socketIO from 'socket.io-client'
+import './App.css'
+import { CreateButton } from './components/JoinButton';
 
-const WS = "http://localhost:9000";
 
 function App() {
-  useEffect(() => {
-    socketIO(WS);
-  }, []);
-
   return (
-    <div className="App">
-       <button> Start new meeting</button>
-    </div>
-  );
+    <>
+      <div className="flex flex-col items-center justify-center h-screen">
+        <h1 className='text-4xl font-bold'>Welcome to WebRTC with socketio</h1>
+        <CreateButton/>
+      </div>
+    </>
+  )
 }
 
-export default App;
+export default App
