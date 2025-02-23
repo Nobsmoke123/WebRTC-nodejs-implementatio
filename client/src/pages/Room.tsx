@@ -8,8 +8,9 @@ export const Room = () => {
     const { ws, me} = useContext(RoomContext);
 
     useEffect(() => {
+        console.log('Joining room', id);
        if(me) ws.emit('join-room', { roomId: id, peerId: me._id });
-    }, [id, me]);
+    }, [id, me, ws]);
 
     return (
         <div>

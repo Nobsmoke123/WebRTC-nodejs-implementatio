@@ -18,20 +18,25 @@ export const RoomProvider: React.FC<any>  = ({ children }) => {
     const [me, setMe] = useState<Peer>();
 
     const getUsers = ({ participants }: { participants: string[] }) => {
+        console.log("Participants: ");
         console.log(participants);
+    };
+
+    const enterRoom = ({ roomId }: { roomId: string}) => {
+        console.log({roomId});
+        navigate(`/room/${roomId}`);
     };
 
     useEffect(() => {
         const peerId = uuidV4();
+
         const peer = new Peer(peerId);
+
         setMe(peer);
 
-        ws.on("room-created", ({ roomId }: { roomId: string}) => {
-            console.log('The roomID is: ', roomId);
-            navigate(`/room/${roomId}`);
-        });
-
+        ws.on("room-created", enterRoom);
         ws.on("get-users", getUsers);
     }, []);
+
     return <RoomContext.Provider value={{ ws, me}}>{ children }</RoomContext.Provider>
  };
