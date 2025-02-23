@@ -1,0 +1,19 @@
+{
+  "extends": "@tsconfig/node22/tslint.json",
+  "defaultSeverity": "error",
+  "linterOptions": {
+    "exclude": ["node_modules/**"]
+  },
+  "rules": {
+    "no-implicit-dependencies": true,
+    "no-submodule-imports": false,
+    "no-console": {
+      "severity": "warning",
+      "options": ["debug", "info", "log", "time", "trace", "timeEnd", "error"]
+    }
+  },
+  "jsRules": {
+    "no-implicit-dependencies": true,
+    "no-submodule-imports": false
+  }
+}
