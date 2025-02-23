@@ -20,6 +20,8 @@ export const roomHandler = (socket: Socket) => {
         roomId,
         participants: Array.from(rooms[roomId]),
       });
+
+      socket.to(roomId).emit("user-joined", { peerId });
     } else {
       console.log("Room not found");
     }
