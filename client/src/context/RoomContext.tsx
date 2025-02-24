@@ -39,7 +39,8 @@ export const RoomProvider: React.FC<any>  = ({ children }) => {
         try {
             navigator.mediaDevices.getUserMedia({ video: true, audio: true })
             .then((stream) => {
-                setStream(stream); 
+                setStream(stream);
+                // speech to text
             }
             );
         } catch (error) {
